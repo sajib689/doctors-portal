@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from './../Context/AuthProvider';
 const Login = () => {
-  const {signIn, google} = useContext(AuthContext)
+  const {signIn, google, reset} = useContext(AuthContext)
   const { register,formState: { errors }, handleSubmit } = useForm();
   const [loginError, setLoginError] = useState('')
   const location = useLocation()
@@ -26,6 +26,11 @@ const Login = () => {
   }
   const handleGoogle = () => {
     google()
+    .then(() => {})
+    .catch(error => console.error(error))
+  }
+  const handleReset = () =>{
+    reset()
     .then(() => {})
     .catch(error => console.error(error))
   }
@@ -58,7 +63,7 @@ const Login = () => {
                        {errors.password && <p className='text-red-600 mt-1' role="alert">{errors.password?.message}</p>}
 
             <label className="label">
-              <span className="label-text">Forget Password?</span>
+              <Link onClick={handleReset} className="label-text">Forget Password?</Link>
             </label>
           </div>
 
