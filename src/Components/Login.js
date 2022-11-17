@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from './../Context/AuthProvider';
 const Login = () => {
-  const {signIn} = useContext(AuthContext)
+  const {signIn, google} = useContext(AuthContext)
   const { register,formState: { errors }, handleSubmit } = useForm();
   const [loginError, setLoginError] = useState('')
   const location = useLocation()
@@ -23,6 +23,11 @@ const Login = () => {
     .catch(error => {
       setLoginError(error.message)
     })
+  }
+  const handleGoogle = () => {
+    google()
+    .then(() => {})
+    .catch(error => console.error(error))
   }
   return (
     <div className="h-[800px] flex justify-center items-center ">
@@ -74,7 +79,7 @@ const Login = () => {
         <div className="flex flex-col w-full border-opacity-50">
           <div className="divider">OR</div>
         </div>
-        <Link className="btn btn-outline w-full">CONTINUE WITH GOOGLE</Link>
+        <Link className="btn btn-outline w-full" onClick={handleGoogle}>CONTINUE WITH GOOGLE</Link>
       </div>
     </div>
   );
