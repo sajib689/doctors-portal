@@ -79,15 +79,13 @@ const SignUp = () => {
               </p>
             )}
 
-            <label className="label">
-              <span className="label-text">Forget Password?</span>
-            </label>
+           
           </div>
 
           <input
             type="submit"
             value="Sign Up"
-            className="btn btn-black w-full max-w-xs"
+            className="btn btn-black w-full max-w-xs mt-3"
           />
         </form>
         {signError && <p className="text-red-500">{signError}</p>}

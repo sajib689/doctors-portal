@@ -54,6 +54,7 @@ const BookingModal = ({ treatment, selectedDate }) => {
               type="text"
               placeholder="Full Name"
               className="mt-3 input input-bordered w-full "
+              
             />
             <input
             name='phone'
