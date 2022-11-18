@@ -5,7 +5,6 @@ import BookingModal from "./BookingModal";
 import { useQuery } from "@tanstack/react-query";
 
 const AppoinmentCalender = ({ selectedDate }) => {
-  // const [appoinment, setAppoinment] = useState([]);
   const [treatment, setTreatment] = useState(null);
 
   const {data:appionmentOption = []} = useQuery({
@@ -13,11 +12,7 @@ const AppoinmentCalender = ({ selectedDate }) => {
     queryFn: () => fetch("http://localhost:5000/appionmentOption")
     .then((res) => res.json())
   })
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/appionmentOption")
-  //     .then((res) => res.json())
-  //     .then((data) => setAppoinment(data));
-  // }, []);
+
   return (
     <section className="mt-12">
       <p className="text-center text-primary">
