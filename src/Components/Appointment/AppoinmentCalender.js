@@ -6,10 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 
 const AppoinmentCalender = ({ selectedDate }) => {
   const [treatment, setTreatment] = useState(null);
-
+  const date = format(selectedDate, "PP")
   const {data:appionmentOption = []} = useQuery({
-    queryKey: ['appionmentOption'],
-    queryFn: () => fetch("http://localhost:5000/appionmentOption")
+    queryKey: ['appionmentOption',date],
+    queryFn: () => fetch(`http://localhost:5000/appionmentOption?date=${date}`)
     .then((res) => res.json())
   })
 
